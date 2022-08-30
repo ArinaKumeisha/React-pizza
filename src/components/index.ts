@@ -1,0 +1,6 @@
+export { Categories } from './Categories'
+export { Header } from './Header'
+export { Sorts } from './Sorts'
+export { PizzaBlock } from './pizaBlock/PizzaBlock'
+export type { Item } from './pizaBlock/PizzaBlock'
+export { Skeleton } from './pizaBlock/Skeleton'
