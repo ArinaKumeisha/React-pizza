@@ -9,7 +9,7 @@ export const Sorts = () => {
     setSelectedSort(indexSort)
     setOpen(false)
   }
-
+  /*consoledddd*/
   return (
     <div className="sort">
       <div className="sort__label">
