@@ -1,10 +1,13 @@
 import React from 'react'
 
-export const Categories = () => {
-  const [activeCategory, setActiveCategory] = React.useState(0)
-
+type Props = {
+  activeCategory: number
+  setActiveCategory: (value: number) => void
+}
+export const Categories = ({ activeCategory, setActiveCategory }: Props) => {
   const categories = [
-    { id: 0, title: 'Мясные' },
+    { id: 0, title: 'Все' },
+    { id: 1, title: 'Мясные' },
     { id: 2, title: 'Вегетарианская' },
     { id: 3, title: 'Гриль' },
     { id: 4, title: 'Острые' },

@@ -1,15 +1,31 @@
 import React from 'react'
+import type { ObjType } from '../pages/Home'
 
-export const Sorts = () => {
+type Props = {
+  setSelectedSort: (obj: ObjType) => void
+  selectedSort: ObjType
+}
+
+export const Sorts = ({ setSelectedSort, selectedSort }: Props) => {
   const [open, setOpen] = React.useState(false)
-  const [selectedSort, setSelectedSort] = React.useState(1)
-  const sortElements = ['популярности', 'цене', 'алфавиту']
+  const sortElements = [
+    { name: 'популярности', sort: 'rating' },
+    {
+      name: 'цене по убыванию',
+      sort: 'price',
+    },
+    {
+      name: 'цене по возрастанию',
+      sort: '-price',
+    },
+    { name: 'алфавиту по возрастанию', sort: 'title' },
+  ]
 
-  const setSortHandler = (indexSort: number) => {
-    setSelectedSort(indexSort)
+  const setSortHandler = (obj: ObjType) => {
+    setSelectedSort(obj)
     setOpen(false)
   }
-  /*consoledddd*/
+
   return (
     <div className="sort">
       <div className="sort__label">
@@ -26,7 +42,7 @@ export const Sorts = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setOpen(!open)}>{sortElements[selectedSort]}</span>
+        <span onClick={() => setOpen(!open)}>{selectedSort.name}</span>
       </div>
       {open && (
         <div className="sort__popup">
@@ -34,10 +50,10 @@ export const Sorts = () => {
             {sortElements.map((el, index) => (
               <li
                 key={index}
-                onClick={() => setSortHandler(index)}
-                className={selectedSort === index ? 'active' : ''}
+                onClick={() => setSortHandler(el)}
+                className={selectedSort.name === el.name ? 'active' : ''}
               >
-                {el}
+                {el.name}
               </li>
             ))}
           </ul>
